@@ -41,8 +41,7 @@ app.get('api/users', (req, res) => {
     })
 })
 
-// Method post
-// Method POST
+// POST method
 app.post('/api/users', (req, res) => {
   const { nama, nim, kelas, jurusan } = req.body;
 
@@ -63,12 +62,11 @@ app.post('/api/users', (req, res) => {
   );
 });
 
-// UPDATE user by id
+// PUT method
 app.put('/api/users/:id', (req, res) => {
   const userId = req.params.id;
   const { nama, nim, kelas } = req.body;
 
-  // (opsional) validasi sederhana
   if (!nama || !nim || !kelas) {
     return res.status(400).json({ message: 'nama, nim, kelas wajib diisi' });
   }
@@ -89,6 +87,7 @@ app.put('/api/users/:id', (req, res) => {
   );                                   
 });                                       
 
+// DELETE method
 app.delete('/api/users/:id', (req, res) => {
     const userId = req.params.id;
     db.query('DELETE FROM mahasiswa WHERE id = ?', [userId], (err, result) => {
