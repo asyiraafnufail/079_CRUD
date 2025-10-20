@@ -29,7 +29,7 @@ db.connect(err => {
     console.log('Connected to the MySQL database.');    
 })
 
-// Method get
+// GET method
 app.get('api/users', (req, res) => {
     db.query('SELECT * FROM mahasiswa', (err, results) => {
         if (err) {
