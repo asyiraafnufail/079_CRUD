@@ -43,7 +43,7 @@ app.get('api/users', (req, res) => {
 
 // POST method
 app.post('/api/users', (req, res) => {
-  const { nama, nim, kelas, jurusan } = req.body;
+  const { nama, nim, kelas} = req.body;
 
   if (!nama || !nim || !kelas) {
     return res.status(400).send('Please provide nama, nim, and kelas');
