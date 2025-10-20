@@ -42,3 +42,24 @@ app.get('api/users', (req, res) => {
 })
 
 // Method post
+// Method POST
+app.post('/api/users', (req, res) => {
+  const { nama, nim, kelas, jurusan } = req.body;
+
+  if (!nama || !nim || !kelas) {
+    return res.status(400).send('Please provide nama, nim, and kelas');
+  }
+
+  db.query(
+    'INSERT INTO mahasiswa (nama, nim, kelas) VALUES (?, ?, ?)',
+    [nama, nim, kelas],
+    (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Database error' });
+      }
+      res.status(201).json({ message: 'User created' });
+    }
+  );
+});
+
